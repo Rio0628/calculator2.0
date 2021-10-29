@@ -6,10 +6,20 @@ body {
 
 .container {
   height: 29rem;
-  width: 21rem;
+  width: 30rem;
   font-family: 'Saira Condensed';
   margin: 2rem;
+  outline: 1px solid red;
+  border-radius: 5px;
+}
+
+.calcContainer {
+  height: 29rem;
+  width: 21rem;
+  font-family: 'Saira Condensed';
+  /* margin: 2rem; */
   outline: 1px solid black;
+  border-radius: 5px 0px 0px 5px;
 }
 
 /* -- BUTTON STYLES --  */
@@ -21,9 +31,15 @@ body {
   height: 4.58rem;
   width: 4.58rem;
   padding: 2px 5px;
-  border-bottom: 1px solid red;
-  border-left: 1px solid red;
+  border-bottom: 1px solid #95979d;
+  border-left: 1px solid #95979d;
   cursor: pointer;
+}
+
+.button:hover {
+  /* height: 4.5rem; */
+  border-top: 1px solid #95979d;
+  background: #d5d6d7;
 }
 
 .button:nth-of-type(1) {
@@ -34,14 +50,41 @@ body {
   border-bottom: none;
 }
 
+.button.clear, .button.parenthesis, .button.percent, .button.divide, .button.plus, .button.minus, .button.times, .button.equals {
+  background: rgba(10, 40, 102, .8);
+  color: #fff8f0;
+  border-top: none;
+}
+
+.button.clear:hover, .button.parenthesis:hover, .button.percent:hover, .button.divide:hover, .button.plus:hover, .button.minus:hover, .button.times:hover, .button.equals:hover {
+  background: rgba(10, 40, 102, .9);
+}
+
+.button.clear, .button.parenthesis, .button.percent {
+  border-bottom: 1px solid #95987d;
+}
+
+.button.divide, .button.plus, .button.minus, .button.times, .button.equals {
+  position: relative;
+  top: 3px;
+  height: 4.4rem;
+}
+
+.button.divide {
+  position: relative;
+  top: 0px;
+  height: 4.55rem; 
+}
+
 .buttonHeading {
   font-size: 1.5rem;
+  font-weight: 600;
   text-align: center;
 }
 
 .buttonsContainer {
   position: relative;
-  bottom: 3.2rem;
+  bottom: 3.3rem;
   height: 23.1rem;
   /* outline: 1px solid red; */
   display: grid;
@@ -59,12 +102,14 @@ body {
 
 .resultContainer {
   position: relative;
-  bottom: 3.2rem;
+  bottom: 3.3rem;
   height: 5.7rem;
   width: 21rem;
   /* left: 2rem; */
   /* top: 2rem; */
-  outline: 1px solid blue;
+  background: #142352;
+  border-bottom: 1px solid black;
+  border-radius: 5px 5px 0px 0px;
 }
 
 .result {
@@ -78,8 +123,9 @@ body {
   text-align: right;
   letter-spacing: 2px;
   padding: 5px 10px;
-  overflow: hidden; 
-  outline: 1px solid magenta;
+  color: #fff8f0;
+  overflow: hidden;
+  /* outline: 1px solid magenta; */
 }
 
 .historyBtn {
@@ -88,11 +134,14 @@ body {
   left: 16.2rem;
   height: 1.3rem;
   width: 3rem;
+  font-weight: 600;
   text-transform: uppercase;
   padding: 1px 5px;
   border-radius: 5px;
-  outline: 1px solid gray;
+  /* outline: 1px solid gray; */
+  background: white;
   cursor: pointer;
+  z-index: 1;
 }
 
 /* -- IND HISTORY CALCULATION STYLES -- */

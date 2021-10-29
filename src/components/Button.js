@@ -1,9 +1,17 @@
 import React from 'react';
 
 const Button = (props) => {
+    
+    const showValue = (value) => {
+        if (value === '*') {
+            return 'x'
+        }
+        else return value;
+    }
+
     return (
         <div className={props.className}>
-            <p className='buttonHeading'>1</p>
+            <p className='buttonHeading'>{showValue(props.value)}</p>
         </div>
     )
 }
