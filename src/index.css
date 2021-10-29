@@ -5,7 +5,8 @@ body {
 }
 
 .container {
-  height: 20rem;
+  height: 29rem;
+  width: 21rem;
   font-family: 'Saira Condensed';
   margin: 2rem;
   outline: 1px solid black;
@@ -15,46 +16,90 @@ body {
 
 .button {
   position: relative;
-  top: 1rem;
-  left: 1rem;
-  height: 2.5rem;
-  width: 2.5rem;
+  /* top: 1rem;
+  left: 1rem; */
+  height: 4.58rem;
+  width: 4.58rem;
+  padding: 2px 5px;
+  border-bottom: 1px solid red;
+  border-left: 1px solid red;
+  cursor: pointer;
+}
+
+.button:nth-of-type(1) {
+  border-left: none;
+}
+
+.button.dot, .button.zero, .button.plusMns, .button.equals{
+  border-bottom: none;
+}
+
+.buttonHeading {
   font-size: 1.5rem;
   text-align: center;
-  padding: 2px 5px;
-  outline: 1px solid red;
 }
+
+.buttonsContainer {
+  position: relative;
+  bottom: 3.2rem;
+  height: 23.1rem;
+  /* outline: 1px solid red; */
+  display: grid;
+}
+
+.indRowBtns {
+  height: 4.5rem;
+  /* background: magenta; */
+  display: flex;
+  /* outline: 1px solid blue; */
+}
+
 
 /* -- RESULT STYLES -- */
 
 .resultContainer {
   position: relative;
-  height: 2.5rem;
-  width: 15rem;
-  left: 2rem;
-  top: 2rem;
+  bottom: 3.2rem;
+  height: 5.7rem;
+  width: 21rem;
+  /* left: 2rem; */
+  /* top: 2rem; */
   outline: 1px solid blue;
 }
 
 .result {
   position: relative;
-  top: 2px;
-  left: 2px;
-  height: 2rem;
-  width: 14.1rem;
-  font-size: 20px;
+  top: 35px;
+  left: 15px;
+  height: 2.8rem;
+  width: 17.6rem;
+  font-size: 1.8rem;
+  font-weight: 600;
   text-align: right;
   letter-spacing: 2px;
-  padding: 2px 5px;
+  padding: 5px 10px;
   overflow: hidden; 
   outline: 1px solid magenta;
+}
+
+.historyBtn {
+  position: relative;
+  top: 6px;
+  left: 16.2rem;
+  height: 1.3rem;
+  width: 3rem;
+  text-transform: uppercase;
+  padding: 1px 5px;
+  border-radius: 5px;
+  outline: 1px solid gray;
+  cursor: pointer;
 }
 
 /* -- IND HISTORY CALCULATION STYLES -- */
 
 .indCalculation {
   position: relative;
-  left: 5rem;
+  left: 25rem;
   top: 10px;
   height: 2rem;
   width: 6rem;

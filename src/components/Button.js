@@ -2,8 +2,8 @@ import React from 'react';
 
 const Button = (props) => {
     return (
-        <div className='button'>
-            1
+        <div className={props.className}>
+            <p className='buttonHeading'>1</p>
         </div>
     )
 }
