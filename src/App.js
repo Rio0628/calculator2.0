@@ -6,8 +6,12 @@ import IndHistCalc from './components/IndHistCalc';
 
 class App extends React.Component {
   render () {
-    
+    let indCalcContainer = [];
 
+    for (let i = 0; i < 1; i++) {
+      indCalcContainer.push( <IndHistCalc key={'calculation' + i} /> );
+    }
+    
     return (
       <div className="container">
         <div className='calcContainer'>
@@ -47,7 +51,13 @@ class App extends React.Component {
           </div>
         </div>
         
-        {/* <IndHistCalc /> */}
+        <div className='historyCalcsCntr'>
+          <div className='backBtn'>Back</div>
+          <h3 className='historyHeading'>History</h3>
+          <div className='indCalcContr'>
+            {indCalcContainer}
+          </div>
+        </div>
       </div>
     );
   }
