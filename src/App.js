@@ -9,7 +9,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       isHistoryOpen: false,
-      result: '',
+      result: '9+10=21',
       indCalculations: [],
     }
   }
@@ -24,17 +24,22 @@ class App extends React.Component {
       if (e.target.className === 'historyBtn' || e.target.className === 'backBtn') {
         this.setState({ isHistoryOpen: !this.state.isHistoryOpen});
       }
+
+      if (e.target.className === 'button clear') {
+        this.setState({ result: ''});
+      }
+      // else if (e.target.className === 'button ') {}
     }
     
     for (let i = 0; i < 290; i++) {
-      indCalcContainer.push( <IndHistCalc key={'calculation' + i} /> );
+      indCalcContainer.push( <IndHistCalc key={'calculation' + i} onClick={onClick}/> );
     }
     
     return (
       <div className="container">
         <div className='calcContainer'>
-          <div className='historyBtn' onClick={onClick}>History</div>
-          <Result /> 
+          {!this.state.isHistoryOpen ? <div className='historyBtn' onClick={onClick}>History</div> : <div className='historyBtnOpen'></div>}
+          <Result result={this.state.result} /> 
           <div className='buttonsContainer'>
             <div className='indRowBtns one'>
               <Button className='button clear' value='C' onClick={onClick}/>
@@ -69,13 +74,15 @@ class App extends React.Component {
           </div>
         </div>
         
-        <div className='historyCalcsCntr'>
-          <div className='backBtn' onClick={onClick}>Back</div>
-          <h3 className='historyHeading'>History</h3>
-          <div className='indCalcContr'>
-            {indCalcContainer}
+        {this.state.isHistoryOpen ? 
+          <div className='historyCalcsCntr'>
+            <div className='backBtn' onClick={onClick}>Back</div>
+            <h3 className='historyHeading'>History</h3>
+            <div className='indCalcContr'>
+              {indCalcContainer}
+            </div>
           </div>
-        </div>
+        : null }
       </div>
     );
   }

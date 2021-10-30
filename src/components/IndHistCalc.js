@@ -1,8 +1,8 @@
 import React from 'react';
 
-const IndHistCalc = () => {
+const IndHistCalc = (props) => {
     return (
-        <p className='indCalculation'>
+        <p className='indCalculation' onClick={props.onClick}>
             2 + 2 = 5
         </p>
     )

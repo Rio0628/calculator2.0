@@ -6,11 +6,11 @@ body {
 
 .container {
   height: 29.2rem;
-  width: 35rem;
+  width: 21rem;
   font-family: 'Saira Condensed';
   margin: 2rem;
-  outline: 1px solid black;
-  border-radius: 5px; 
+  /* outline: 1px solid black; */
+  border-radius: 3px; 
 }
 
 .calcContainer {
@@ -19,7 +19,8 @@ body {
   font-family: 'Saira Condensed';
   /* margin: 2rem; */
   outline: 1px solid #142352;
-  border-radius: 5px;
+  border-radius: 5px 5px 3px 3px ;
+  box-shadow: -2px 2px 5px #95979d, 0px -2px 5px #95979d;
 }
 
 /* -- BUTTON STYLES --  */
@@ -137,6 +138,21 @@ body {
   background: #d5d6d7;
 }
 
+.historyBtnOpen {
+  position: relative;
+  top: 6px;
+  left: 16.2rem;
+  height: 1.3rem;
+  width: 3rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 1px 5px;
+  border-radius: 5px;
+  /* outline: 1px solid gray; */
+  /* background: white; */
+  z-index: 1;
+}
+
 /* -- IND HISTORY CALCULATION STYLES -- */
 
 .historyCalcsCntr {
@@ -145,7 +161,7 @@ body {
   bottom: 29.2rem;
   height: 29.2rem;
   width: 14rem;
-  /* box-shadow: -2px 0px 0px #95979d; */
+  box-shadow: 1px 1px 2px #95979d, 0px -1px 2px #95979d;
   background: rgba(92, 91, 89, .04);
   border-radius: 0px 5px 5px 0px ;
 } 

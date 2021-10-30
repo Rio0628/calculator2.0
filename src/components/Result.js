@@ -1,9 +1,9 @@
 import React from 'react'; 
 
-const Result = () => {
+const Result = (props) => {
     return (
         <div className='resultContainer'>
-            <p className='result'>9 + 10 = 21</p>
+            <p className='result'>{props.result}</p>
         </div>
     )
 }
