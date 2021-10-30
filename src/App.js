@@ -9,28 +9,52 @@ class App extends React.Component {
     super(props);
     this.state = {
       isHistoryOpen: false,
-      result: '9+10=21',
+      result: '',
       indCalculations: [],
     }
   }
 
   render () {
     let indCalcContainer = [];
-  
-    const onClick = (e) => { 
+    
+    const changeHstrState = () => {
+      this.setState({ isHistoryOpen: !this.state.isHistoryOpen});
+    }
+
+    const onClick = async (e) => { 
       console.log(e.target)
       const value = e.target.getAttribute('value');
 
-      if (e.target.className === 'historyBtn' || e.target.className === 'backBtn') {
-        this.setState({ isHistoryOpen: !this.state.isHistoryOpen});
+      if (this.state.calculationDone) {
+        await this.setState({ result: '' });
+        this.setState({ calculationDone: false });
       }
 
       if (e.target.className === 'button clear') {
         this.setState({ result: ''});
       }
-      // else if (e.target.className === 'button ') {}
+      else if (e.target.className === 'button parenthesis') {
+        this.setState({ result: `(${this.state.result})`});
+      }
+      else if (e.target.className === 'button sqrt') {
+        this.setState({ result: Math.sqrt(this.state.result) });
+        // this.setState({ result: (-1 * parseFloat(this.state.result).toString()) });
+      }
+      else if (e.target.className === 'button equals') {
+        try {
+          // eslint-disable-next-line
+          this.setState({ result: (eval(this.state.result) || '' ) + '' });
+          this.setState({ calculationDone: true });
+        } catch (e) {
+          this.setState({ result: 'Error '});
+          this.setState({ calculationDone: true });
+        }
+      }
+      else {
+        this.setState({ result: this.state.result + value });
+      }
     }
-    
+
     for (let i = 0; i < 290; i++) {
       indCalcContainer.push( <IndHistCalc key={'calculation' + i} onClick={onClick}/> );
     }
@@ -38,7 +62,7 @@ class App extends React.Component {
     return (
       <div className="container">
         <div className='calcContainer'>
-          {!this.state.isHistoryOpen ? <div className='historyBtn' onClick={onClick}>History</div> : <div className='historyBtnOpen'></div>}
+          {!this.state.isHistoryOpen ? <div className='historyBtn' onClick={changeHstrState}>History</div> : <div className='historyBtnOpen'></div>}
           <Result result={this.state.result} /> 
           <div className='buttonsContainer'>
             <div className='indRowBtns one'>
@@ -68,7 +92,7 @@ class App extends React.Component {
             <div className='indRowBtns five'>
               <Button className='button dot' value='.' onClick={onClick}/>
               <Button className='button zero' value='0' onClick={onClick}/>
-              <Button className='button plusMns' value='+/-' onClick={onClick}/>
+              <Button className='button sqrt' value='√' onClick={onClick}/>
               <Button className='button equals' value='=' onClick={onClick}/>
             </div>
           </div>
@@ -76,7 +100,7 @@ class App extends React.Component {
         
         {this.state.isHistoryOpen ? 
           <div className='historyCalcsCntr'>
-            <div className='backBtn' onClick={onClick}>Back</div>
+            <div className='backBtn' onClick={changeHstrState}>Back</div>
             <h3 className='historyHeading'>History</h3>
             <div className='indCalcContr'>
               {indCalcContainer}
