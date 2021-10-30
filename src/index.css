@@ -68,6 +68,7 @@ body {
   font-size: 1.5rem;
   font-weight: 600;
   text-align: center;
+  pointer-events: none;
 }
 
 .buttonsContainer {
@@ -206,7 +207,7 @@ body {
 .indCalculation {
   position: relative;
   left: 1.5rem;
-  /* top: 10px; */
+  bottom: 20px;
   height: 2rem;
   width: 9rem;
   font-size: 25px;
