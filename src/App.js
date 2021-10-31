@@ -18,6 +18,7 @@ class App extends React.Component {
     let indCalcContainer = [];
     
     const changeHstrState = () => {
+      // Change the state between showing the history container or not
       this.setState({ isHistoryOpen: !this.state.isHistoryOpen});
     }
 
@@ -26,34 +27,41 @@ class App extends React.Component {
       const value = e.target.getAttribute('value');
 
       if (this.state.calculationDone) {
+        // Set the result state to an empty array after a calculation is made
         await this.setState({ result: '' });
         this.setState({ calculationDone: false });
       }
 
       if (e.target.className === 'button clear') {
+        // Set the result state to clear
         this.setState({ result: ''});
       }
       else if (e.target.className === 'button parenthesis') {
+        // Set the state result in a parenthesis 
         this.setState({ result: `(${this.state.result})`});
       }
       else if (e.target.className === 'button percent') {
+        // Divides the result by 100
         this.setState({ result: (this.state.result / 100) });
       }
       else if (e.target.className === 'button sqrt') {
+        // Squares roots the result state 
         this.setState({ result: Math.sqrt(this.state.result) });
-        // this.setState({ result: (-1 * parseFloat(this.state.result).toString()) });
       }
       else if (e.target.className === 'button equals') {
+        // Main eval function that will yield the result of the calculation
         try {
           const result = this.state.result;
          
           // eslint-disable-next-line
           await this.setState({ result: (eval(this.state.result) || '' ) + '' });
           this.setState({ calculationDone: true });
+          
+          // Place the result and answer variable within an object that will be placed within the indCalculations state
           const answer = this.state.result;
           const obj = {calc: result, answer: answer};
-          console.log(answer)
           this.setState(prevState => (({ indCalculations: [...prevState.indCalculations, obj]})));
+
         } catch (e) {
           this.setState({ result: 'Error '});
           this.setState({ calculationDone: true });
@@ -68,8 +76,8 @@ class App extends React.Component {
       }
       
     }
-    console.log(this.state.indCalculations)
-    console.log(this.state.result)
+  
+    // Main function for creating all of the history calculation components 
     for (let i = 0; i < this.state.indCalculations.length ; i++) {
       indCalcContainer.push( <IndHistCalc key={'calculation' + i} info={this.state.indCalculations[i]} onClick={onClick}/> );
     }
@@ -84,7 +92,7 @@ class App extends React.Component {
               <Button className='button clear' value='C' onClick={onClick}/>
               <Button className='button parenthesis' value='( ) ' onClick={onClick}/>
               <Button className='button percent' value='%' onClick={onClick}/>
-              <Button className='button divide' value='÷' onClick={onClick}/>
+              <Button className='button divide' value='/' onClick={onClick}/>
             </div>
             <div className='indRowBtns two'>
               <Button className='button' value='7' onClick={onClick}/>

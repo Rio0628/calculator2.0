@@ -3,8 +3,12 @@ import React from 'react';
 const Button = (props) => {
     
     const showValue = (value) => {
+        // Function to change the way certain button's icons look
         if (value === '*') {
             return 'x'
+        }
+        else if (value === '/') {
+            return '÷'
         }
         else return value;
     }
