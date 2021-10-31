@@ -232,6 +232,8 @@ body {
   padding: 2px 5px;
   border-bottom: 1px solid gray;
   cursor: pointer;
+  overflow-y: hidden;
+  word-break: break-word;
 }
 
 .indCalculation:hover {

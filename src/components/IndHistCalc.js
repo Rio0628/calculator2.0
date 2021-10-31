@@ -2,8 +2,8 @@ import React from 'react';
 
 const IndHistCalc = (props) => {
     return (
-        <p className='indCalculation' onClick={props.onClick}>
-            2 + 2 = 5
+        <p className='indCalculation' calculation={props.info.calc} onClick={props.onClick}>
+            {`${props.info.calc} = ${props.info.answer}`}
         </p>
     )
 }

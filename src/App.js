@@ -36,30 +36,45 @@ class App extends React.Component {
       else if (e.target.className === 'button parenthesis') {
         this.setState({ result: `(${this.state.result})`});
       }
+      else if (e.target.className === 'button percent') {
+        this.setState({ result: (this.state.result / 100) });
+      }
       else if (e.target.className === 'button sqrt') {
         this.setState({ result: Math.sqrt(this.state.result) });
         // this.setState({ result: (-1 * parseFloat(this.state.result).toString()) });
       }
       else if (e.target.className === 'button equals') {
         try {
+          const result = this.state.result;
+         
           // eslint-disable-next-line
-          this.setState({ result: (eval(this.state.result) || '' ) + '' });
+          await this.setState({ result: (eval(this.state.result) || '' ) + '' });
           this.setState({ calculationDone: true });
+          const answer = this.state.result;
+          const obj = {calc: result, answer: answer};
+          console.log(answer)
+          this.setState(prevState => (({ indCalculations: [...prevState.indCalculations, obj]})));
         } catch (e) {
           this.setState({ result: 'Error '});
           this.setState({ calculationDone: true });
         }
       }
+      else if (e.target.className === 'indCalculation') {
+        this.setState({ result: e.target.getAttribute('calculation') });
+        console.log('mariop')
+      }
       else {
         this.setState({ result: this.state.result + value });
       }
+      
     }
-
-    for (let i = 0; i < 290; i++) {
-      indCalcContainer.push( <IndHistCalc key={'calculation' + i} onClick={onClick}/> );
+    console.log(this.state.indCalculations)
+    console.log(this.state.result)
+    for (let i = 0; i < this.state.indCalculations.length ; i++) {
+      indCalcContainer.push( <IndHistCalc key={'calculation' + i} info={this.state.indCalculations[i]} onClick={onClick}/> );
     }
     
-    return (
+      return (
       <div className="container">
         <div className='calcContainer'>
           {!this.state.isHistoryOpen ? <div className='historyBtn' onClick={changeHstrState}>History</div> : <div className='historyBtnOpen'></div>}
